@@ -1,0 +1,28 @@
+name: Review
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches: "*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Source code quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache setup
+        uses: ./.github/actions/cache
+      - name: Formatting
+        run: cargo fmt --check
+      - name: Lint
+        run: cargo clippy -- -D warnings
+      - name: Tests
+        run: cargo test
