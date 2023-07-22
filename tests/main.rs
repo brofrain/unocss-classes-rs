@@ -43,3 +43,27 @@ fn mimics_original_transformer_behavior() {
         assert_eq!(result, expected_result);
     }
 }
+
+#[test]
+fn transforms_inconsistent_whitespaces() {
+    const CASES: [(&str, &str); 2] = [
+        (
+            uno!(" \n \t text-(red\nlg:(sm blue)) \tm-(t1\n\t r-2)  \n "),
+            "text-red text-lg:sm text-lg:blue m-t1 m-r-2",
+        ),
+        (
+            uno!(
+                r"p-(x4 y5)
+text-red
+    text-lg
+            sm:fw300
+                m-(t1 r-2)"
+            ),
+            "p-x4 p-y5 text-red text-lg sm:fw300 m-t1 m-r-2",
+        ),
+    ];
+
+    for (result, expected_result) in CASES {
+        assert_eq!(result, expected_result);
+    }
+}

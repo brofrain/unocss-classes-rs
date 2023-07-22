@@ -20,14 +20,17 @@ static CLASS_GROUP_REG: Lazy<Regex> = Lazy::new(|| {
     .unwrap()
 });
 static WHITESPACE_REG: Lazy<Regex> = Lazy::new(|| Regex::new(r"\s").unwrap());
+static WHITESPACES_REG: Lazy<Regex> = Lazy::new(|| Regex::new(r"\s+").unwrap());
 static IMPORTANCE_REG: Lazy<Regex> = Lazy::new(|| Regex::new(r"^(!?)(.*)").unwrap());
 
 const SEPARATORS: [&str; 2] = ["-", ":"];
 const DEPTH: u8 = 10;
 
 fn shallow_transform(str: &str) -> String {
+    let str = WHITESPACES_REG.replace_all(str, " ");
+
     CLASS_GROUP_REG
-        .replace_all(str, |caps: &Captures| {
+        .replace_all(str.trim(), |caps: &Captures| {
             if !SEPARATORS.contains(&&caps[2]) {
                 return caps[0].to_string();
             }
@@ -50,6 +53,7 @@ fn shallow_transform(str: &str) -> String {
         .into_owned()
 }
 
+// based on https://github.com/unocss/unocss/blob/main/packages/core/src/utils/variantGroup.ts
 fn transform(str: &str) -> String {
     let mut depth = DEPTH;
     let mut previous = String::from(str);
