@@ -2,9 +2,13 @@ use unocss_variant_group_transformer::uno;
 
 #[test]
 fn mimics_original_transformer_behavior() {
-    // test cases taken from
-    // https://github.com/unocss/unocss/blob/main/test/transformer-variant-group.test.ts
-    const CASES: [(&str, &str); 14] = [
+    let cases = vec![
+        // test cases taken from
+        // https://github.com/unocss/unocss/blob/main/test/transformer-variant-group.test.ts
+        (
+            uno!("a1 a2:(b1 b2:(c1 c2-(d1 d2) c3) b3) a3"),
+            "a1 a2:b1 a2:b2:c1 a2:b2:c2-d1 a2:b2:c2-d2 a2:b2:c3 a2:b3 a3",
+        ),
         (
             uno!("bg-white font-light sm:hover:(bg-gray-100 font-medium)"),
             "bg-white font-light sm:hover:bg-gray-100 sm:hover:font-medium",
@@ -37,9 +41,29 @@ fn mimics_original_transformer_behavior() {
             uno!("[&]:(w-4 h-4) [&]:(w-4 h-4)"),
             "[&]:w-4 [&]:h-4 [&]:w-4 [&]:h-4",
         ),
+        // test cases taken from
+        // https://github.com/unocss/unocss/blob/main/test/variant-group.test.ts
+        (uno!(""), ""),
+        (uno!("a b c"), "a b c"),
+        (uno!("a:b:c"), "a:b:c"),
+        (uno!("hello a:(b c) c:(a:b d)"), "hello a:b a:c c:a:b c:d"),
+        (uno!("b:c:d:(!a z)"), "!b:c:d:a b:c:d:z"),
+        (uno!("a-(b c) c-(a:b d)"), "a-b a-c c-a:b c-d"),
+        (uno!("a-(~ b c)"), "a a-b a-c"),
+        (uno!("a-(b c-(d e f))"), "a-b a-c-d a-c-e a-c-f"),
+        (uno!("a-( ~ b c )"), "a a-b a-c"),
+        (
+            uno!("b:[&:not(c)]:d:(!a z)"),
+            "!b:[&:not(c)]:d:a b:[&:not(c)]:d:z",
+        ),
+        (uno!("[&]:(a-b c-d)"), "[&]:a-b [&]:c-d"),
+        (uno!("  a:(b:(c-d d-c)) "), "a:b:c-d a:b:d-c"),
+        (uno!("@a:(c-d d-c)"), "@a:c-d @a:d-c"),
+        (uno!("!@a:(c-d d-c)"), "!@a:c-d !@a:d-c"),
+        (uno!("a:(b?c d)"), "a:b?c a:d"),
     ];
 
-    for (result, expected_result) in CASES {
+    for (result, expected_result) in cases {
         assert_eq!(result, expected_result);
     }
 }
