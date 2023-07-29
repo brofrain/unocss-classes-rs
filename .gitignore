@@ -1,5 +1,14 @@
+dist
+
+# Dependencies
+node_modules
 target
 
+# Dependencies
+node_modules
+target
+
+# Editor directories and files
 .vscode/*
 .idea
 .DS_Store

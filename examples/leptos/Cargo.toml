@@ -1,0 +1,9 @@
+[package]
+name = "leptos-example"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+leptos = { version = "0.5.0-alpha", features = ["csr", "nightly"] }
+leptos-use = { git = "https://github.com/Synphonyte/leptos-use.git", rev = "2161f77" }
+unocss-variant-group-transformer = { git = "https://github.com/brofrain/unocss-variant-group-transformer-rs.git", rev = "4d9845f" }
