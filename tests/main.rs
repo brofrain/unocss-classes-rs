@@ -3,6 +3,10 @@ use unocss_variant_group_transformer::uno;
 #[test]
 fn mimics_original_transformer_behavior() {
     let cases = vec![
+        (
+            uno!("hover:(bg-gray-400 font-medium)", "font-(light mono)"),
+            "hover:bg-gray-400 hover:font-medium font-light font-mono",
+        ),
         // test cases taken from
         // https://github.com/unocss/unocss/blob/main/test/transformer-variant-group.test.ts
         (
