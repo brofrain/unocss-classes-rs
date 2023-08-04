@@ -1,6 +1,6 @@
 [package]
 name = "unocss-variant-group-transformer"
-version = "0.0.1"
+version = "1.0.0"
 edition = "2021"
 description = "Variant group transformer macro for UnoCSS / WindiCSS utility classes"
 repository = "https://github.com/brofrain/unocss-variant-group-transformer"

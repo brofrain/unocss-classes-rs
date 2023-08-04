@@ -89,7 +89,7 @@ checksum = "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
 
 [[package]]
 name = "unocss-variant-group-transformer"
-version = "0.0.1"
+version = "1.0.0"
 dependencies = [
  "once_cell",
  "proc-macro2",
