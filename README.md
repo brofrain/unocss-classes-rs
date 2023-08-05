@@ -4,7 +4,7 @@
 
 This crate provides `uno!` macro that applies [@unocss/transformer-variant-group](https://github.com/unocss/unocss/tree/main/packages/transformer-variant-group) to string literals.
 
-## Example ([Leptos](https://leptos.dev/))
+## [Leptos](https://leptos.dev/) example
 
 ```rust
 use leptos::*;
@@ -17,9 +17,9 @@ fn App() -> impl IntoView {
 }
 ```
 
-You can also see this [example](https://github.com/brofrain/unocss-variant-group-transformer-rs/tree/main/examples/leptos)
+Check out also this example [app](https://github.com/brofrain/unocss-variant-group-transformer-rs/tree/main/examples/leptos)
 
-## Example ([Dioxus](https://dioxuslabs.com/))
+## [Dioxus](https://dioxuslabs.com/) example
 
 ```rust
 use dioxus::prelude::*;
@@ -27,7 +27,18 @@ use unocss_variant_group_transformer::uno;
 
 pub fn App(cx: Scope) -> Element {
     render! {div { class: uno!("hover:(bg-gray-400 font-medium)", "font-(light mono)"), "Some text" }}
-    // equivalent to: render! {div { class: "hover:bg-gray-400 hover:font-medium font-light font-mono", "Some text" }}
+}
+```
+
+## [Yew](https://yew.rs/) example
+
+```rust
+use yew::prelude::*;
+use unocss_variant_group_transformer::uno;
+
+#[function_component]
+pub fn App(cx: Scope) -> Element {
+    html! { <div class={ uno!("hover:(bg-gray-400 font-medium)", "font-(light mono)") }>{ "Some text" }</div> }
 }
 ```
 
