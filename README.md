@@ -37,7 +37,7 @@ use yew::prelude::*;
 use unocss_variant_group_transformer::uno;
 
 #[function_component]
-pub fn App(cx: Scope) -> Element {
+pub fn App() -> Html {
     html! { <div class={ uno!("hover:(bg-gray-400 font-medium)", "font-(light mono)") }>{ "Some text" }</div> }
 }
 ```
