@@ -12,6 +12,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "classes"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5603d514e43c7439b594a021fa63bf6bfde2b47b6af966023624fd777d4dd8b3"
+
+[[package]]
 name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -88,12 +94,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
 
 [[package]]
-name = "unocss-variant-group-transformer"
+name = "unocss-classes"
+version = "0.0.0"
+dependencies = [
+ "classes",
+ "unocss-classes-macro",
+]
+
+[[package]]
+name = "unocss-classes-macro"
 version = "1.0.0"
 dependencies = [
- "once_cell",
  "proc-macro2",
  "quote",
- "regex",
  "syn",
+ "unocss-classes-variant-group-transformer",
+]
+
+[[package]]
+name = "unocss-classes-variant-group-transformer"
+version = "0.0.0"
+dependencies = [
+ "once_cell",
+ "regex",
 ]

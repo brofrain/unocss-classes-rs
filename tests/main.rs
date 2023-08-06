@@ -1,4 +1,4 @@
-use unocss_variant_group_transformer::uno;
+use unocss_classes::uno;
 
 #[test]
 fn mimics_original_transformer_behavior() {
@@ -39,7 +39,7 @@ fn mimics_original_transformer_behavior() {
         (uno!("hover:(\n!m-2 \np-2\n)"), "!hover:m-2 hover:p-2"),
         (
             uno!("md:(w-1/2 h-[calc(100%-4rem)])"),
-            uno!("md:w-1/2 md:h-[calc(100%-4rem)]"),
+            "md:w-1/2 md:h-[calc(100%-4rem)]",
         ),
         (
             uno!("[&]:(w-4 h-4) [&]:(w-4 h-4)"),
@@ -74,7 +74,7 @@ fn mimics_original_transformer_behavior() {
 
 #[test]
 fn transforms_inconsistent_whitespaces() {
-    const CASES: [(&str, &str); 2] = [
+    let cases = vec![
         (
             uno!(" \n \t text-(red\nlg:(sm blue)) \tm-(t1\n\t r-2)  \n "),
             "text-red text-lg:sm text-lg:blue m-t1 m-r-2",
@@ -91,7 +91,59 @@ text-red
         ),
     ];
 
-    for (result, expected_result) in CASES {
+    for (result, expected_result) in cases {
+        assert_eq!(result, expected_result);
+    }
+}
+
+#[test]
+fn mimics_original_classes_behavior() {
+    // test cases taken from
+    // https://github.com/sparten11740/classes/blob/main/src/core.rs
+    let cases = vec![
+        (
+            uno!["button".to_string(), "button--disabled"],
+            "button button--disabled",
+        ),
+        (
+            uno![
+                Some("button--active"),
+                None::<String>,
+                Some("button--disabled".to_string())
+            ],
+            "button--active button--disabled",
+        ),
+        (
+            uno![
+                "concatenated".to_string() + "-class",
+                Some("batman").map(|_| "bruce-wayne")
+            ],
+            "concatenated-class bruce-wayne",
+        ),
+        // TODO: handle arrows
+        // [
+        //     uno!["button" => true, "button--disabled" => DISABLED, "button--active" => false, "all-the-buttons" => 42 > 3 ],
+        //     "button button--disabled all-the-buttons"
+        // ],
+        // [
+        //     uno!["button" => true, Some("button--disabled"), None::<String>, "button--primary"],
+        //     "button button--disabled button--primary"
+        // ],
+        (
+            uno!["button", "", "button--active"],
+            "button button--active",
+        ),
+        (
+            uno!["button", "".to_string(), "button--active"],
+            "button button--active",
+        ),
+        (
+            uno!["button", Some(""), "button--active"],
+            "button button--active",
+        ),
+    ];
+
+    for (result, expected_result) in cases {
         assert_eq!(result, expected_result);
     }
 }
