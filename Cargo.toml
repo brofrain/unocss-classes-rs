@@ -23,12 +23,12 @@ keywords = [
 
 [workspace]
 resolver = "2"
-members = ["packages/macro", "packages/variant-group-transformer"]
+members = ["packages/macros", "packages/utils"]
 
 [workspace.dependencies]
-unocss-classes-macro = { path = "packages/macro" }
-unocss-classes-variant-group-transformer = { path = "packages/variant-group-transformer" }
+macros = { path = "packages/macros" }
+utils = { path = "packages/utils" }
 
 [dependencies]
-unocss-classes-macro.workspace = true
+macros.workspace = true
 classes = "1.0.0"

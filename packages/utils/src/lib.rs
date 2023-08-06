@@ -42,7 +42,7 @@ fn shallow_transform(str: &str) -> String {
 }
 
 /// based on https://github.com/unocss/unocss/blob/main/packages/core/src/utils/variantGroup.ts
-pub fn transform(str: &str) -> String {
+pub fn transform_variant_groups(str: &str) -> String {
     let mut depth = DEPTH;
     let mut previous = String::from(str);
 

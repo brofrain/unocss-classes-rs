@@ -23,5 +23,5 @@ macro_rules! uno {
 
 pub mod exports {
     pub use classes;
-    pub use unocss_classes_macro::uno as __uno;
+    pub use macros::uno as __uno;
 }

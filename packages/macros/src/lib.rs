@@ -7,7 +7,7 @@ use syn::{
     punctuated::Punctuated,
     Expr, ExprLit, Lit, LitStr, Token,
 };
-use unocss_classes_variant_group_transformer::transform;
+use utils::transform_variant_groups;
 
 struct UnoClassExpr(Expr);
 
@@ -18,7 +18,7 @@ impl Parse for UnoClassExpr {
                 lit: Lit::Str(lit_str),
                 attrs,
             }) => {
-                let transformed_value = transform(&lit_str.value());
+                let transformed_value = transform_variant_groups(&lit_str.value());
                 let new_lit_str = LitStr::new(&transformed_value, lit_str.span());
 
                 Ok(Self(Expr::Lit(ExprLit {

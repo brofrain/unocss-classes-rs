@@ -1,5 +1,5 @@
 [package]
-name = "unocss-classes-macro"
+name = "macros"
 version = "1.0.0"
 edition = "2021"
 
@@ -7,7 +7,7 @@ edition = "2021"
 proc-macro2 = "1.0.66"
 quote = "1.0.31"
 syn = { version = "2.0.26", features = ["full"] }
-unocss-classes-variant-group-transformer.workspace = true
+utils.workspace = true
 
 [lib]
 proc-macro = true
