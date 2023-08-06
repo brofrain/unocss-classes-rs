@@ -118,7 +118,7 @@ impl ToTokens for UnoClasses {
     }
 }
 
-/// TODO: docs
+/// Transforms Variant Groups in the given string literals.
 ///
 /// # Example
 ///
