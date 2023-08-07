@@ -100,6 +100,7 @@ text-red
 fn mimics_original_classes_behavior() {
     // test cases taken from
     // https://github.com/sparten11740/classes/blob/main/src/core.rs
+    const DISABLED: bool = true;
     let cases = vec![
         (
             uno!["button".to_string(), "button--disabled"],
@@ -120,15 +121,14 @@ fn mimics_original_classes_behavior() {
             ],
             "concatenated-class bruce-wayne",
         ),
-        // TODO: handle arrows
-        // [
-        //     uno!["button" => true, "button--disabled" => DISABLED, "button--active" => false, "all-the-buttons" => 42 > 3 ],
-        //     "button button--disabled all-the-buttons"
-        // ],
-        // [
-        //     uno!["button" => true, Some("button--disabled"), None::<String>, "button--primary"],
-        //     "button button--disabled button--primary"
-        // ],
+        (
+            uno!["button" => true, "button--disabled" => DISABLED, "button--active" => false, "all-the-buttons" => 42 > 3 ],
+            "button button--disabled all-the-buttons",
+        ),
+        (
+            uno!["button" => true, Some("button--disabled"), None::<String>, "button--primary"],
+            "button button--disabled button--primary",
+        ),
         (
             uno!["button", "", "button--active"],
             "button button--active",

@@ -9,48 +9,72 @@ use syn::{
 };
 use utils::transform_variant_groups;
 
-struct UnoClassExpr(Expr);
+struct UnoClasses(Punctuated<Punctuated<Expr, Token![=>]>, Token![,]>);
 
-impl Parse for UnoClassExpr {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
-        match input.parse()? {
-            Expr::Lit(ExprLit {
-                lit: Lit::Str(lit_str),
+fn parse_uno_classes_expr(input: ParseStream) -> syn::Result<Expr> {
+    match input.parse()? {
+        Expr::Lit(ExprLit {
+            lit: Lit::Str(lit_str),
+            attrs,
+        }) => {
+            let transformed_value = transform_variant_groups(&lit_str.value());
+            let new_lit_str = LitStr::new(&transformed_value, lit_str.span());
+
+            Ok(Expr::Lit(ExprLit {
+                lit: Lit::Str(new_lit_str),
                 attrs,
-            }) => {
-                let transformed_value = transform_variant_groups(&lit_str.value());
-                let new_lit_str = LitStr::new(&transformed_value, lit_str.span());
-
-                Ok(Self(Expr::Lit(ExprLit {
-                    lit: Lit::Str(new_lit_str),
-                    attrs,
-                })))
-            }
-            expr => Ok(Self(expr)),
+            }))
         }
+        expr => Ok(expr),
     }
 }
 
-struct UnoClasses(Punctuated<UnoClassExpr, Token![,]>);
+fn parse_uno_classes_punctuated_expr(
+    input: ParseStream,
+) -> syn::Result<Punctuated<Expr, Token![=>]>> {
+    let mut punctuated_expr = Punctuated::new();
+
+    punctuated_expr.push_value(parse_uno_classes_expr(input)?);
+
+    if input.is_empty() || !input.peek(Token![=>]) {
+        return Ok(punctuated_expr);
+    }
+
+    let punct = input.parse()?;
+    punctuated_expr.push_punct(punct);
+
+    punctuated_expr.push_value(parse_uno_classes_expr(input)?);
+
+    Ok(punctuated_expr)
+}
 
 impl Parse for UnoClasses {
     fn parse(input: ParseStream) -> syn::Result<Self> {
         input
-            .parse_terminated(UnoClassExpr::parse, Token![,])
+            .parse_terminated(parse_uno_classes_punctuated_expr, Token![,])
             .map(Self)
     }
 }
 
 impl ToTokens for UnoClasses {
     fn to_tokens(&self, tokens: &mut TokenStream2) {
-        let max_i = self.0.len() - 1;
+        let expr_and_comma = self.0.iter().enumerate().map(|(i, punctuated)| {
+            let expr_and_arrow = punctuated
+                .iter()
+                .enumerate()
+                .map(|(j, expr)| {
+                    if j == 0 {
+                        quote! { #expr }
+                    } else {
+                        quote! { => #expr }
+                    }
+                })
+                .collect::<TokenStream2>();
 
-        let expr_and_comma = self.0.iter().enumerate().map(|(i, expr)| {
-            let UnoClassExpr(expr) = expr;
-            if i == max_i {
-                quote! { #expr }
+            if i == 0 {
+                quote! { #expr_and_arrow }
             } else {
-                quote! { #expr, }
+                quote! { , #expr_and_arrow }
             }
         });
 
