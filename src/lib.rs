@@ -5,12 +5,12 @@
 /// ```
 /// use unocss_classes::uno;
 ///
-/// assert_eq!(uno!("text-red"), "text-red");
+/// assert_eq!(uno!["text-red"], "text-red");
 ///
-/// assert_eq!(uno!("text-(red sm)"), "text-red text-sm");
+/// assert_eq!(uno!["text-(red sm)"], "text-red text-sm");
 ///
 /// assert_eq!(
-///     uno!("text-(blue lg)", "placeholder:(italic text-(red sm))"),
+///     uno!["text-(blue lg)", "placeholder:(italic text-(red sm))"],
 ///     "text-blue text-lg placeholder:italic placeholder:text-red placeholder:text-sm"
 /// );
 /// ```
