@@ -23,7 +23,7 @@ keywords = [
 
 [workspace]
 resolver = "2"
-members = ["packages/macros", "packages/utils"]
+members = ["packages/macros", "packages/utils", "examples/leptos"]
 
 [workspace.dependencies]
 macros = { path = "packages/macros" }

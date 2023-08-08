@@ -1,6 +1,6 @@
 use leptos::*;
 use leptos_use::{use_color_mode_with_options, ColorMode, UseColorModeOptions, UseColorModeReturn};
-use unocss_variant_group_transformer::uno;
+use unocss_classes::uno;
 
 #[component]
 fn App() -> impl IntoView {
@@ -16,19 +16,21 @@ fn App() -> impl IntoView {
     };
 
     view! {
-        <div class=uno!(
+        <div class=uno![
             "font-sans", "min-h-screen", "flex-(~ col) items-center gap8", "py10",
             "bg-#f5f5f5 text-#1a1a1a dark:(bg-#1a1a1a text-#fff) transition"
-        )>
+        ]>
             <div class="icon-carbon-sun dark:icon-carbon-moon text-8xl"></div>
 
-            <div class="font-serif italic">"Leptos + UnoCSS example"</div>
+            <div class=move || {
+                uno!["font-serif", "italic" => mode() == ColorMode::Light]
+            }>"Leptos + UnoCSS example"</div>
 
             <button
-                class=uno!(
+                class=uno![
                     "block", "rounded", "p-(x4 y1)", "fw600", "bg-#d74f3f/90 hover:bg-#f74c00",
                     "select-none", "cursor-pointer", "transition-background-color"
-                )
+                ]
 
                 on:click=toggle_dark
             >
