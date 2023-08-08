@@ -147,3 +147,35 @@ fn mimics_original_classes_behavior() {
         assert_eq!(result, expected_result);
     }
 }
+
+#[test]
+fn mixed_scenario() {
+    const BOOL: bool = true;
+    const USIZE: usize = 123;
+    let some_string: Option<String> = Some("text-black".to_string());
+
+    let cases = vec![
+        (
+            uno!["text-sm".to_string(), "text-(red nowrap)" => BOOL],
+            "text-sm text-red text-nowrap",
+        ),
+        (
+            uno!["text-(red nowrap)" => USIZE == 123, some_string],
+            "text-red text-nowrap text-black",
+        ),
+        (
+            uno![
+                "hover:(bg-gray-400 font-medium)",
+                "",
+                None::<String>,
+                "font-(light mono)",
+                ""
+            ],
+            "hover:bg-gray-400 hover:font-medium font-light font-mono",
+        ),
+    ];
+
+    for (result, expected_result) in cases {
+        assert_eq!(result, expected_result);
+    }
+}

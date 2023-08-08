@@ -7,7 +7,7 @@ This crate provides a wrapper around [classes!](https://crates.io/crates/classes
 ## Examples
 
 - ```rust
-  uno!["hover:(bg-gray-400 font-medium)", "font-(light mono)"]; // -> "bg-gray-400 hover:font-medium font-light font-mono"
+  uno!["hover:(bg-gray-400 font-medium)", "font-(light mono)"]; // -> "hover:bg-gray-400 hover:font-medium font-light font-mono"
   ```
 
 - ```rust
