@@ -5,6 +5,7 @@ edition.workspace = true
 repository.workspace = true
 homepage.workspace = true
 license.workspace = true
+readme.workspace = true
 description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
 
 keywords = [
