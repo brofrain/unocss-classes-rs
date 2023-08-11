@@ -2,7 +2,7 @@
 name = "unocss-classes"
 version = "0.0.0"
 edition = "2021"
-description = "Variant group transformer macro for UnoCSS / WindiCSS utility classes"
+description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
 repository = "https://github.com/brofrain/unocss-classes-rs"
 homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
