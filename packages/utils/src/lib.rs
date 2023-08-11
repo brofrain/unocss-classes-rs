@@ -1,5 +1,5 @@
 use once_cell::sync::Lazy;
-use regex::{Captures, Regex};
+use regex_lite::{Captures, Regex};
 
 static CLASS_GROUP_REG: Lazy<Regex> = Lazy::new(|| {
     Regex::new(
