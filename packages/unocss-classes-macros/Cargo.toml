@@ -5,6 +5,7 @@ edition.workspace = true
 repository.workspace = true
 homepage.workspace = true
 license.workspace = true
+description = "Macros for `unocss-classes`"
 
 [dependencies]
 proc-macro2 = "1.0.66"

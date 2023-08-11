@@ -5,6 +5,7 @@ edition.workspace = true
 repository.workspace = true
 homepage.workspace = true
 license.workspace = true
+description = "Utils for `unocss-classes`"
 
 [dependencies]
 once_cell = "1.18.0"
