@@ -11,12 +11,12 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@unocss/reset": "^0.54.0"
+    "@unocss/reset": "^0.55.0"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.95",
-    "@unocss/cli": "^0.54.0",
-    "@unocss/preset-web-fonts": "^0.54.0",
-    "unocss": "^0.54.0"
+    "@iconify/json": "^2.2.101",
+    "@unocss/cli": "^0.55.0",
+    "@unocss/preset-web-fonts": "^0.55.0",
+    "unocss": "^0.55.0"
   }
 }

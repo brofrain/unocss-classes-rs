@@ -22,4 +22,11 @@ export default defineConfig({
   transformers: [transformerVariantGroup()],
 
   content: { pipeline: { include: ["**/*.rs"] } },
+
+  cli: {
+    entry: {
+      patterns: ["src/**/*.rs"],
+      outFile: "node_modules/.unocss-prebuild/uno.css",
+    },
+  },
 });

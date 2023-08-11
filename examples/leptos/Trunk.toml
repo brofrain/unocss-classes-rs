@@ -1,22 +1,7 @@
 [watch]
 watch = ["index.html", "src"]
 
-# HACK
-# `unocss-cli` as of 0.54.0 parses variant groups and transforms source files.
-# We don't want that, since `uno!` macro takes care of generating valid CSS classes,
-# so we copy the source files to a temporary directory and the allow UnoCSS to
-# extract utils from them
-[[hooks]]
-stage = "pre_build"
-command = "cp"
-command_arguments = ["-r", "src", "node_modules/.unocss-prebuild"]
-
 [[hooks]]
 stage = "pre_build"
 command = "npx"
-command_arguments = [
-  "unocss",
-  "node_modules/.unocss-prebuild/**/*.rs",
-  "--out-file",
-  "node_modules/.unocss-prebuild/uno.css",
-]
+command_arguments = ["unocss"]

@@ -1,11 +1,10 @@
-# TODO change repo name and the links below
 [package]
 name = "unocss-classes"
 version = "0.0.0"
 edition = "2021"
 description = "Variant group transformer macro for UnoCSS / WindiCSS utility classes"
-repository = "https://github.com/brofrain/unocss-variant-group-transformer-rs"
-homepage = "https://github.com/brofrain/unocss-variant-group-transformer-rs"
+repository = "https://github.com/brofrain/unocss-classes-rs"
+homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
 keywords = [
   "unocss",
