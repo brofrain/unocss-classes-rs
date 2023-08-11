@@ -1,4 +1,4 @@
-# unocss-variant-group-transformer
+# unocss-classes
 
 > HTML class builder macro with UnoCSS variant group transformer for Rust web frameworks
 
