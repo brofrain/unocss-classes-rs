@@ -26,12 +26,12 @@ members = ["packages/macros", "packages/utils"]
 exclude = ["examples"]
 
 [workspace.dependencies]
-unocss-classes-macros = { path = "packages/macros" }
-unocss-classes-utils = { path = "packages/utils" }
+unocss-classes-macros = { path = "packages/macros", version = "1.0.0" }
+unocss-classes-utils = { path = "packages/utils", version = "1.0.0" }
 
 [dependencies]
-unocss-classes-macros.workspace = true
-unocss-classes-utils = { workspace = true, optional = true }
+unocss-classes-macros = { workspace = true, version = "1.0.0" }
+unocss-classes-utils = { workspace = true, optional = true, version = "1.0.0" }
 classes = "1.0.0"
 
 [features]
