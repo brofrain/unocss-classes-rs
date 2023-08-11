@@ -7,20 +7,7 @@ homepage.workspace = true
 license.workspace = true
 readme.workspace = true
 description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
-
-keywords = [
-  "unocss",
-  "windicss",
-  "atomic-css",
-  "yew",
-  "dioxus",
-  "leptos",
-  "ui",
-  "gui",
-  "dom",
-  "wasm",
-  "web",
-]
+keywords = ["unocss", "css", "ui", "wasm", "web"]
 
 [dependencies]
 unocss-classes-macros.workspace = true
