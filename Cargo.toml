@@ -12,7 +12,6 @@ version = "0.0.1"
 readme = "README.md"
 edition = "2021"
 repository = "https://github.com/brofrain/unocss-classes-rs"
-homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
 
 [workspace.dependencies]
