@@ -7,7 +7,7 @@ use syn::{
     punctuated::Punctuated,
     Expr, ExprLit, Lit, LitStr, Token,
 };
-use utils::transform_variant_groups;
+use unocss_classes_utils::transform_variant_groups;
 
 struct UnoClasses(Punctuated<Punctuated<Expr, Token![=>]>, Token![,]>);
 
