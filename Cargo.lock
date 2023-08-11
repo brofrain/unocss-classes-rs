@@ -57,7 +57,7 @@ checksum = "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
 
 [[package]]
 name = "unocss-classes"
-version = "0.0.1"
+version = "1.0.0"
 dependencies = [
  "classes",
  "unocss-classes-macros",
@@ -66,7 +66,7 @@ dependencies = [
 
 [[package]]
 name = "unocss-classes-macros"
-version = "0.0.1"
+version = "1.0.0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -76,7 +76,7 @@ dependencies = [
 
 [[package]]
 name = "unocss-classes-utils"
-version = "0.0.1"
+version = "1.0.0"
 dependencies = [
  "once_cell",
  "regex-lite",
