@@ -1,7 +1,0 @@
-[watch]
-watch = ["index.html", "src"]
-
-[[hooks]]
-stage = "pre_build"
-command = "npx"
-command_arguments = ["unocss"]
