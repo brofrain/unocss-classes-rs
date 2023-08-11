@@ -7,7 +7,8 @@ This crate provides a wrapper around [classes!](https://crates.io/crates/classes
 ## Exports
 
 - `uno!` - works just like `classes!` macro, but also transforms Variant Groups in string literals. The transformation is done at compile time, so there is no overhead.
-- `to_uno!` - it has the same purpose, but the transformation is executed at **runtime**. It can be useful to transform dynamically combined classes, but generally should be avoided. Requires `runtime` feature.
+- `to_uno!` - it has the same purpose, but the transformation is executed at **runtime**. It can be useful to transform dynamically combined classes, but generally should be avoided. Requires `runtime` feature.\
+  Also UnoCSS may not be able to pick up utilities generated at runtime, so it may be necessary to use [Safelist](https://unocss.dev/guide/extracting#safelist) or [runtime engine](https://unocss.dev/integrations/runtime#runtime).
 
 ## Examples
 
@@ -41,6 +42,15 @@ uno![Some("text-(sm center)")] // doesn't work
 
 let class = "text-(sm center)";
 uno![class] // doesn't work
+```
+
+That's where the `to_uno!` macro comes in handy.
+
+```rust
+to_uno![Some("text-(sm center)")]
+
+let class = "text-(sm center)";
+to_uno![class]
 ```
 
 ### [Leptos](https://leptos.dev/) example
@@ -101,7 +111,11 @@ extern crate yew_unocss_transformer;
 
 ## Using UnoCSS with a Rust front-end framework
 
-// TODO
+You basically need to run [@unocss/cli](https://unocss.dev/integrations/cli#cli) first to build a CSS file embedded in your app and then run a bundler (e.g. Trunk) to compile the rest of your project. To do this automatically you can use [Cargo's build scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html) or [Trunk's pre-build hooks](https://github.com/thedodd/trunk/blob/master/Trunk.toml). For larger projects running in watch mode, it may be better to run `@unocss/cli` in watch mode as well, so building the output CSS file is a bit faster.
+
+You can refer to the already mentioned [Leptos & Trunk example](https://github.com/brofrain/unocss-variant-group-transformer-rs/tree/main/examples/leptos) taking advantage of Trunk's hooks.
+
+It is also possible to combine [Vite](https://vitejs.dev/) with Trunk / Dioxus CLI / Leptos CLI, but it requires a more hacky setup and, unless you really need some Vite-exclusive features (e.g. [Webfont self-hosting](https://github.com/feat-agency/vite-plugin-webfont-dl)), it's probably not worth the effort.
 
 ## License
 
