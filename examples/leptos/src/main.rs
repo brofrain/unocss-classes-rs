@@ -1,6 +1,6 @@
 use leptos::*;
 use leptos_use::{use_color_mode_with_options, ColorMode, UseColorModeOptions, UseColorModeReturn};
-use unocss_classes::uno;
+use unocss_classes::{to_uno, uno};
 
 #[component]
 fn App() -> impl IntoView {
@@ -15,9 +15,11 @@ fn App() -> impl IntoView {
         })
     };
 
+    let gh_icon = "icon-carbon-logo-github";
+
     view! {
         <div class=uno![
-            "font-sans", "min-h-screen", "flex-(~ col) items-center gap8", "py10",
+            "font-sans", "min-h-screen", "flex-(~ col) items-center gap6", "py10",
             "bg-#f5f5f5 text-#1a1a1a dark:(bg-#1a1a1a text-#fff) transition"
         ]>
             <div class="icon-carbon-sun dark:icon-carbon-moon text-8xl"></div>
@@ -36,6 +38,11 @@ fn App() -> impl IntoView {
             >
                 "Toggle dark mode"
             </button>
+
+            <a
+                class=to_uno![gh_icon, "text-3xl"]
+                href="https://github.com/brofrain/unocss-classes-rs"
+            ></a>
         </div>
     }
 }
