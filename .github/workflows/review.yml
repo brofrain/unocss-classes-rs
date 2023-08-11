@@ -25,4 +25,4 @@ jobs:
       - name: Lint
         run: cargo clippy -- -D warnings
       - name: Tests
-        run: cargo test --workspace
+        run: cargo test --workspace --all-features

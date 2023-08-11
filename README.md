@@ -4,6 +4,11 @@
 
 This crate provides a wrapper around [classes!](https://crates.io/crates/classes) macro that additionally transforms string literals in harmony with [@unocss/transformer-variant-group](https://github.com/unocss/unocss/tree/main/packages/transformer-variant-group). It is meant to simplify building compound DOM classes in frontend Rust frameworks like [Leptos](https://leptos.dev/) / [Dioxus](https://dioxuslabs.com/) / [Yew](https://yew.rs/), while also taking full advantage of [UnoCSS](https://unocss.dev/)'s features.
 
+## Exports
+
+- `uno!` - works just like `classes!` macro, but also transforms Variant Groups in string literals. The transformation is done at compile time, so there is no overhead.
+- `to_uno!` - it has the same purpose, but the transformation is executed at **runtime**. It can be useful to transform dynamically combined classes, but generally should be avoided. Requires `runtime` feature.
+
 ## Examples
 
 - ```rust

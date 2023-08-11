@@ -31,4 +31,8 @@ utils = { path = "packages/utils" }
 
 [dependencies]
 macros.workspace = true
+utils = { workspace = true, optional = true }
 classes = "1.0.0"
+
+[features]
+runtime = ["dep:utils"]

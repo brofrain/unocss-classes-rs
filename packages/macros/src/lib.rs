@@ -17,7 +17,7 @@ fn parse_uno_classes_expr(input: ParseStream) -> syn::Result<Expr> {
             lit: Lit::Str(lit_str),
             attrs,
         }) => {
-            let transformed_value = transform_variant_groups(&lit_str.value());
+            let transformed_value = transform_variant_groups(lit_str.value());
             let new_lit_str = LitStr::new(&transformed_value, lit_str.span());
 
             Ok(Expr::Lit(ExprLit {
@@ -83,7 +83,7 @@ impl ToTokens for UnoClasses {
 }
 
 #[proc_macro]
-pub fn uno(input: TokenStream) -> TokenStream {
+pub fn uno_classes(input: TokenStream) -> TokenStream {
     let classes = parse_macro_input!(input as UnoClasses);
     TokenStream::from(classes.into_token_stream())
 }

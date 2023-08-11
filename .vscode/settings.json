@@ -1,0 +1,11 @@
+{
+  "files.readonlyInclude": {
+    ".vscode/settings.json": true,
+    "**/node_modules/**": true,
+    "**/target/**": true
+  },
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.columnWidth": 80,
+  "evenBetterToml.formatter.indentString": "  ",
+  "rust-analyzer.cargo.features": ["runtime"]
+}
