@@ -21,7 +21,7 @@ jobs:
       - name: Cache setup
         uses: ./.github/actions/cache
       - name: Formatting
-        run: cargo fmt --check
+        run: cargo fmt --check --all
       - name: Lint
         run: cargo clippy -- -D warnings
       - name: Tests

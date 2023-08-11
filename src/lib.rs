@@ -74,5 +74,7 @@ macro_rules! to_uno {
 pub mod exports {
     pub use classes;
     pub use macros::uno_classes as __uno_classes;
+
+    #[cfg(feature = "runtime")]
     pub use utils::transform_variant_groups as __transform_variant_groups;
 }
