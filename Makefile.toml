@@ -1,0 +1,29 @@
+
+[config]
+skip_core_tasks = true
+default_to_workspace = false
+
+[tasks.lint]
+script = """
+cargo fmt --check --all &&
+cargo clippy -- -D warnings
+"""
+
+[tasks.test]
+command = "cargo"
+args = ["test", "--workspace", "--all-features"]
+
+[tasks.publish-utils]
+command = "cargo"
+args = ["publish", "-p", "unocss-classes-utils"]
+
+[tasks.publish-macros]
+command = "cargo"
+args = ["publish", "-p", "unocss-classes-macros"]
+
+[tasks.publish-main]
+command = "cargo"
+args = ["publish", "-p", "unocss-classes"]
+
+[tasks.publish]
+dependencies = ["publish-utils", "publish-macros", "publish-main"]
