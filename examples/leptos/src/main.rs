@@ -3,9 +3,9 @@ use leptos_use::{use_color_mode_with_options, ColorMode, UseColorModeOptions, Us
 use unocss_classes::{to_uno, uno};
 
 #[component]
-fn App() -> impl IntoView {
+fn App(cx: Scope) -> impl IntoView {
     let UseColorModeReturn { mode, set_mode, .. } =
-        use_color_mode_with_options(UseColorModeOptions::default().transition_enabled(true));
+        use_color_mode_with_options(cx, UseColorModeOptions::default().transition_enabled(true));
 
     let toggle_dark = move |_| {
         set_mode(if mode() == ColorMode::Dark {
@@ -17,7 +17,7 @@ fn App() -> impl IntoView {
 
     let gh_icon = "icon-carbon-logo-github";
 
-    view! {
+    view! { cx,
         <div class=uno![
             "font-sans", "min-h-screen", "flex-(~ col) items-center gap6", "py10",
             "bg-#f5f5f5 text-#1a1a1a dark:(bg-#1a1a1a text-#fff) transition"
@@ -48,5 +48,5 @@ fn App() -> impl IntoView {
 }
 
 fn main() {
-    mount_to_body(|| view! { <App/> });
+    mount_to_body(|cx| view! { cx, <App/> });
 }
