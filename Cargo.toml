@@ -8,7 +8,7 @@ members = [
 exclude = ["examples"]
 
 [workspace.package]
-version = "1.0.0"
+version = "0.0.1"
 readme = "README.md"
 edition = "2021"
 repository = "https://github.com/brofrain/unocss-classes-rs"
@@ -16,6 +16,6 @@ homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
 
 [workspace.dependencies]
-unocss-classes = { path = "packages/unocss-classes", version = "1.0.0" }
-unocss-classes-macros = { path = "packages/unocss-classes-macros", version = "1.0.0" }
-unocss-classes-utils = { path = "packages/unocss-classes-utils", version = "1.0.0" }
+unocss-classes = { path = "packages/unocss-classes" }
+unocss-classes-macros = { path = "packages/unocss-classes-macros" }
+unocss-classes-utils = { path = "packages/unocss-classes-utils" }
