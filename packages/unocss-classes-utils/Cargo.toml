@@ -1,0 +1,11 @@
+[package]
+name = "unocss-classes-utils"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+
+[dependencies]
+once_cell = "1.18.0"
+regex-lite = "0.1.0"

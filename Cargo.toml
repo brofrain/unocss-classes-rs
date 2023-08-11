@@ -1,38 +1,21 @@
-[package]
-name = "unocss-classes"
+[workspace]
+resolver = "2"
+members = [
+  "packages/unocss-classes",
+  "packages/unocss-classes-macros",
+  "packages/unocss-classes-utils",
+]
+exclude = ["examples"]
+
+[workspace.package]
 version = "1.0.0"
+readme = "README.md"
 edition = "2021"
-description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
 repository = "https://github.com/brofrain/unocss-classes-rs"
 homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
-keywords = [
-  "unocss",
-  "windicss",
-  "atomic-css",
-  "yew",
-  "dioxus",
-  "leptos",
-  "ui",
-  "gui",
-  "dom",
-  "wasm",
-  "web",
-]
-
-[workspace]
-resolver = "2"
-members = ["packages/macros", "packages/utils"]
-exclude = ["examples"]
 
 [workspace.dependencies]
-unocss-classes-macros = { path = "packages/macros", version = "1.0.0" }
-unocss-classes-utils = { path = "packages/utils", version = "1.0.0" }
-
-[dependencies]
-unocss-classes-macros = { workspace = true, version = "1.0.0" }
-unocss-classes-utils = { workspace = true, optional = true, version = "1.0.0" }
-classes = "1.0.0"
-
-[features]
-runtime = ["dep:unocss-classes-utils"]
+unocss-classes = { path = "packages/unocss-classes", version = "1.0.0" }
+unocss-classes-macros = { path = "packages/unocss-classes-macros", version = "1.0.0" }
+unocss-classes-utils = { path = "packages/unocss-classes-utils", version = "1.0.0" }

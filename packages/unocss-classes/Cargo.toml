@@ -1,0 +1,30 @@
+[package]
+name = "unocss-classes"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
+
+keywords = [
+  "unocss",
+  "windicss",
+  "atomic-css",
+  "yew",
+  "dioxus",
+  "leptos",
+  "ui",
+  "gui",
+  "dom",
+  "wasm",
+  "web",
+]
+
+[dependencies]
+unocss-classes-macros.workspace = true
+unocss-classes-utils = { workspace = true, optional = true }
+classes = "1.0.0"
+
+[features]
+runtime = ["dep:unocss-classes-utils"]
