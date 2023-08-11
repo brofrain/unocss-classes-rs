@@ -16,6 +16,6 @@ homepage = "https://github.com/brofrain/unocss-classes-rs"
 license = "MIT"
 
 [workspace.dependencies]
-unocss-classes = { path = "packages/unocss-classes" }
-unocss-classes-macros = { path = "packages/unocss-classes-macros" }
-unocss-classes-utils = { path = "packages/unocss-classes-utils" }
+unocss-classes = { path = "packages/unocss-classes", version = "0.0.1" }
+unocss-classes-macros = { path = "packages/unocss-classes-macros", version = "0.0.1" }
+unocss-classes-utils = { path = "packages/unocss-classes-utils", version = "0.0.1" }
