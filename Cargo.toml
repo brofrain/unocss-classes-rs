@@ -1,6 +1,6 @@
 [package]
 name = "unocss-classes"
-version = "0.0.0"
+version = "1.0.0"
 edition = "2021"
 description = "HTML class builder macro with UnoCSS variant group transformer for web frameworks"
 repository = "https://github.com/brofrain/unocss-classes-rs"
