@@ -7,7 +7,7 @@ This crate provides a wrapper around [classes!](https://crates.io/crates/classes
 ## Exports
 
 - `uno!` - works just like `classes!` macro, but also transforms Variant Groups in string literals. The transformation is done at compile time, so there is no overhead.
-- `to_uno!` - it has the same purpose, but the transformation is executed at **runtime**. It can be useful to transform dynamically combined classes, but generally should be avoided. Requires `runtime` feature.\
+- `to_uno!` - it has the same purpose, but the output string is additionally transformed at **runtime**. It can be useful to transform dynamically combined classes, but generally should be avoided. Requires `runtime` feature.\
   Also UnoCSS may not be able to pick up utilities generated at runtime, so it may be necessary to use [Safelist](https://unocss.dev/guide/extracting#safelist) or [runtime engine](https://unocss.dev/integrations/runtime#runtime).
 
 ## Examples
