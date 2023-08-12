@@ -57,7 +57,7 @@ to_uno![class]
 
 ```rust
 use leptos::*;
-use unocss_variant_group_transformer::uno;
+use unocss_classes::uno;
 
 #[component]
 fn App() -> impl IntoView {
@@ -81,20 +81,25 @@ You can check out also this example Leptos [app](https://github.com/brofrain/uno
 
 ### [Dioxus](https://dioxuslabs.com/) example
 
+Dioxus on its own does not allow `String` to be used directly in `rsx!` as it has no `IntoAttributeValue` trait implemented. Some built-in componets even strictly require `&'a str` as the class attribute value.\
+For that purpose, both `uno!` and `to_uno!` macros accept Dioxus' `Scope` as the first argument separated by a semicolon from the rest of the parameters. In such scenario, the output `String` will be converted to `&'a str` with a valid lifetime.
+
 ```rust
 use dioxus::prelude::*;
-use unocss_variant_group_transformer::uno;
+use unocss_classes::uno;
 
 pub fn App(cx: Scope) -> Element {
-    render! {div { class: uno!["hover:(bg-gray-400 font-medium)", "font-(light mono)"], "Some text" }}
+    render! {div { class: uno![cx; "hover:(bg-gray-400 font-medium)", "font-(light mono)"], "Some text" }}
 }
 ```
+
+There is an example Dioxus [app](https://github.com/brofrain/unocss-variant-group-transformer-rs/tree/main/examples/dioxus) as well!
 
 ### [Yew](https://yew.rs/) example
 
 ```rust
 use yew::prelude::*;
-use unocss_variant_group_transformer::uno;
+use unocss_classes::uno;
 
 #[function_component]
 pub fn App() -> Html {
@@ -106,7 +111,7 @@ pub fn App() -> Html {
 
 ```rust
 #[macro_use]
-extern crate yew_unocss_transformer;
+extern crate unocss_classes;
 ```
 
 ## Using UnoCSS with a Rust front-end framework
