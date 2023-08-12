@@ -7,7 +7,5 @@ edition = "2021"
 dioxus = { version = "0.4.0" }
 dioxus-web = { version = "0.4.0" }
 gloo = "0.8.1"
-unocss-classes = { path = "../../packages/unocss-classes", features = [
-  "runtime",
-] }
+unocss-classes = { version = "1.1.0", features = ["runtime"] }
 web-sys = { version = "0.3.64" }

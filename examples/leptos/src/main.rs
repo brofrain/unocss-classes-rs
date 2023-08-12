@@ -40,7 +40,7 @@ fn App(cx: Scope) -> impl IntoView {
             </button>
 
             <a
-                class=to_uno![gh_icon, "text-3xl", "hover:text-#f74c00", "transition"]
+                class=to_uno![gh_icon, "text-3xl", Some("hover:text-#f74c00"), "transition"]
                 href="https://github.com/brofrain/unocss-classes-rs"
                 target="_blank"
             ></a>

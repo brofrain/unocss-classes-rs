@@ -1079,7 +1079,9 @@ checksum = "1dd624098567895118886609431a7c3b8f516e41d30e0643f03d94592a147e36"
 
 [[package]]
 name = "unocss-classes"
-version = "1.0.0"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e031467eca95df42ce24aa2c84aab6b50d254cd91bb71f655b1f21200061589a"
 dependencies = [
  "classes",
  "unocss-classes-macros",
@@ -1088,7 +1090,9 @@ dependencies = [
 
 [[package]]
 name = "unocss-classes-macros"
-version = "1.0.0"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "963b58eba5374aa6b8292dbb49305bf23cb462c0e84e74d77f14eb13463b49b0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1098,7 +1102,9 @@ dependencies = [
 
 [[package]]
 name = "unocss-classes-utils"
-version = "1.0.0"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d71cb26260292c432c5b37881862f25829f512b14911bf96380029b4c282162d"
 dependencies = [
  "once_cell",
  "regex-lite",

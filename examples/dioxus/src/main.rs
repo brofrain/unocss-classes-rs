@@ -42,7 +42,7 @@ fn App(cx: Scope) -> Element {
                 ], onclick: toggle_dark, "Toggle dark mode" }
 
             a {
-                class: to_uno![cx; gh_icon, "text-3xl", "hover:text-#f74c00", "transition"],
+                class: to_uno![cx; gh_icon, "text-3xl", Some("hover:text-#f74c00"), "transition"],
                 href: "https://github.com/brofrain/unocss-classes-rs",
                 target: "_blank"
             }
