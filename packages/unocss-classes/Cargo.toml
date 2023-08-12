@@ -9,9 +9,9 @@ description = "HTML class builder macro with UnoCSS variant group transformer fo
 keywords = ["unocss", "css", "ui", "wasm", "web"]
 
 [dependencies]
+classes = "1.0.0"
 unocss-classes-macros.workspace = true
 unocss-classes-utils = { workspace = true, optional = true }
-classes = "1.0.0"
 
 [features]
 runtime = ["dep:unocss-classes-utils"]

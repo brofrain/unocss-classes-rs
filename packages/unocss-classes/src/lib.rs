@@ -35,6 +35,17 @@
 /// ```
 #[macro_export]
 macro_rules! uno {
+    ($cx:expr; $($t:tt)*) => {
+        {
+            let bump_string =
+                dioxus::core::exports::bumpalo::collections::String::from_str_in(
+                    &unocss_classes::uno!($($t)*),
+                    $cx.bump()
+                );
+            bump_string.into_bump_str()
+        }
+    };
+
     ($($t:tt)*) => {
         unocss_classes::exports::__uno_classes!($($t)*)
     };
@@ -64,9 +75,16 @@ macro_rules! uno {
 #[cfg(feature = "runtime")]
 #[macro_export]
 macro_rules! to_uno {
+    ($cx:expr; $($t:tt)*) => {
+        unocss_classes::uno!(
+            $cx;
+            unocss_classes::to_uno!($($t)*)
+        )
+    };
+
     ($($t:tt)*) => {
         unocss_classes::exports::__transform_variant_groups(
-            unocss_classes::exports::classes::classes!($($t)*)
+            unocss_classes::uno!($($t)*)
         )
     };
 }
