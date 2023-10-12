@@ -33,6 +33,14 @@
 /// let truthy = true;
 /// assert_eq!(uno!["text-(sm center)" => truthy], "text-sm text-center");
 /// ```
+#[cfg(not(feature = "dioxus"))]
+#[macro_export]
+macro_rules! uno {
+    ($($t:tt)*) => {
+        unocss_classes::exports::__uno_classes!($($t)*)
+    };
+}
+#[cfg(feature = "dioxus")]
 #[macro_export]
 macro_rules! uno {
     ($cx:expr; $($t:tt)*) => {
