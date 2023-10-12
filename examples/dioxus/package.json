@@ -1,22 +1,22 @@
 {
   "name": "dioxus-example",
   "version": "0.0.0",
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.9.0",
   "engines": {
-    "node": "^18.17.0",
-    "pnpm": "^8.6.0"
+    "node": "^18.18.0",
+    "pnpm": "^8.9.0"
   },
   "engineStrict": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@unocss/reset": "^0.55.0"
+    "@unocss/reset": "^0.56.5"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.101",
-    "@unocss/cli": "^0.55.0",
-    "@unocss/preset-web-fonts": "^0.55.0",
-    "unocss": "^0.55.0"
+    "@iconify/json": "^2.2.128",
+    "@unocss/cli": "^0.56.5",
+    "@unocss/preset-web-fonts": "^0.56.5",
+    "unocss": "^0.56.5"
   }
 }
