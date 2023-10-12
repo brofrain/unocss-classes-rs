@@ -82,7 +82,8 @@ You can check out also this example Leptos [app](https://github.com/brofrain/uno
 ### [Dioxus](https://dioxuslabs.com/) example
 
 Dioxus on its own does not allow `String` to be used directly in `rsx!` as it has no `IntoAttributeValue` trait implemented. Some built-in componets even strictly require `&'a str` as the class attribute value.\
-For that purpose, both `uno!` and `to_uno!` macros accept Dioxus' `Scope` as the first argument separated by a semicolon from the rest of the parameters. In such scenario, the output `String` will be converted to `&'a str` with a valid lifetime.
+For that purpose, both `uno!` and `to_uno!` macros accept Dioxus' `Scope` as the first argument separated by a semicolon from the rest of the parameters. In such scenario, the output `String` will be converted to `&'a str` with a valid lifetime.\
+That behavior requires `dioxus` feature to be enabled.
 
 ```rust
 use dioxus::prelude::*;
